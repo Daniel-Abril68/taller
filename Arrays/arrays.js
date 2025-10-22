@@ -1,14 +1,13 @@
-
 // Taller interactivo de Arrays en JavaScript
-// Ejecutar con: node arrays.js
+// Ejecutar con: node Arrays/arrays.js
 
 // Importamos el módulo readline para leer desde consola
-const readline = require('readline');
+const readline = require("readline");
 
 // Creamos la interfaz para entrada/salida de datos
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
 // Creamos un array vacío para guardar las frutas
@@ -16,7 +15,8 @@ let frutas = [];
 
 // Función para mostrar el menú
 function mostrarMenu() {
-  console.log("\n🍎 --- MENÚ DE ARRAYS ---");
+  console.clear(); // Limpia la consola en cada menú
+  console.log("🍎 --- MENÚ DE ARRAYS ---");
   console.log("1. Agregar una fruta");
   console.log("2. Mostrar frutas");
   console.log("3. Eliminar la última fruta");
@@ -32,7 +32,7 @@ function manejarOpcion(opcion) {
       rl.question("🍌 Escribe el nombre de la fruta: ", (nombre) => {
         frutas.push(nombre);
         console.log(`✅ ${nombre} agregada correctamente.`);
-        mostrarMenu();
+        setTimeout(mostrarMenu, 1000);
       });
       break;
 
@@ -42,7 +42,7 @@ function manejarOpcion(opcion) {
       } else {
         console.log("🧺 Frutas actuales:", frutas.join(", "));
       }
-      mostrarMenu();
+      setTimeout(mostrarMenu, 1500);
       break;
 
     case "3":
@@ -52,27 +52,29 @@ function manejarOpcion(opcion) {
       } else {
         console.log("⚠️ No hay frutas para eliminar.");
       }
-      mostrarMenu();
+      setTimeout(mostrarMenu, 1500);
       break;
 
     case "4":
       frutas.sort();
-      console.log("📚 Frutas ordenadas:", frutas);
-      mostrarMenu();
+      console.log("📚 Frutas ordenadas:", frutas.join(", "));
+      setTimeout(mostrarMenu, 1500);
       break;
 
     case "5":
-      console.log("👋 ¡Gracias por usar el programa de Arrays!");
+      console.log("\n👋 ¡Gracias por usar el programa de Arrays!");
+      console.log("🍇 Programa finalizado correctamente.\n");
       rl.close();
       break;
 
     default:
       console.log("⚠️ Opción no válida. Intenta de nuevo.");
-      mostrarMenu();
+      setTimeout(mostrarMenu, 1000);
       break;
   }
 }
 
 // Iniciar el programa
-console.log("🍇 Bienvenido al Taller Interactivo de Arrays en JavaScript");
+console.clear();
+console.log("🍇 Bienvenido al Taller Interactivo de Arrays en JavaScript\n");
 mostrarMenu();
